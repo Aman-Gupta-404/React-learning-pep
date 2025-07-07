@@ -1,56 +1,27 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./styles.css";
+
+// components import
+import ActionComponent from "./components/action/ActionComponent";
+import Reaction from "./components/reaction/Reaction";
+
+// create a context
+export const TestContext = createContext();
 
 function App() {
   const [input, setInput] = useState("");
-  const [todo, setTodo] = useState([]);
+
+  const updateInput = (value) => {
+    setInput(value);
+  };
 
   return (
-    <div className="container">
-      <div className="form">
-        <input
-          placeholder="Add todo"
-          onChange={(event) => {
-            setInput(event.target.value);
-          }}
-        />
-
-        <button
-          onClick={(e) => {
-            // setTodo((prev) => [...prev, input]);
-            setTodo((prev) => {
-              return [...prev, input];
-            });
-          }}
-        >
-          + Add
-        </button>
+    <TestContext.Provider value={{ updateInputFun: updateInput, input }}>
+      <div className={"container-light"}>
+        <ActionComponent />
+        <Reaction />
       </div>
-
-      {/* All my todos comes here */}
-      <div className="my-todos">
-        <ul>
-          {todo.map((item, i) => {
-            return (
-              <li key={i}>
-                {item}
-                <button
-                  onClick={() => {
-                    console.log(i);
-                    setTodo((prev) => {
-                      const filteredArr = prev.filter((item, idx) => idx !== i);
-                      return filteredArr;
-                    });
-                  }}
-                >
-                  X
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    </TestContext.Provider>
   );
 }
 

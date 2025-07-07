@@ -5,12 +5,28 @@ body {
   align-items: center;
 }
 
-.container {
+.container-light {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: black;
+}
+
+.container-dark {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  background: lightslategray;
+  color: white;
 }
 
 .form {
@@ -44,6 +60,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--color);
 }
 
 input {
