@@ -1,0 +1,17 @@
+import React from "react";
+import { NavLink } from "react-router";
+
+function Home() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <div>
+        <NavLink to="/login" end>
+          Login user
+        </NavLink>
+      </div>
+    </div>
+  );
+}
+
+export default Home;

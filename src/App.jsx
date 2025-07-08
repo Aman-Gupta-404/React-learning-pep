@@ -1,27 +1,17 @@
 import { createContext, useState } from "react";
 import "./styles.css";
-
-// components import
-import ActionComponent from "./components/action/ActionComponent";
-import Reaction from "./components/reaction/Reaction";
-
-// create a context
-export const TestContext = createContext();
+import Home from "./components/home/Home";
+import Login from "./components/login/Login";
+import User from "./components/user/User";
+import { Routes, Route } from "react-router";
 
 function App() {
-  const [input, setInput] = useState("");
-
-  const updateInput = (value) => {
-    setInput(value);
-  };
-
   return (
-    <TestContext.Provider value={{ updateInputFun: updateInput, input }}>
-      <div className={"container-light"}>
-        <ActionComponent />
-        <Reaction />
-      </div>
-    </TestContext.Provider>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/user/:userId" element={<User />} />
+    </Routes>
   );
 }
 
